@@ -94,14 +94,14 @@ for file in files:
     model = YOLO('yolov8n-seg.pt')
     results = model(rgb)
     
-    #if not results[0].masks: 
-    #    species_folder = OUTPUT_FOLDER / "Unidentified"
-    #    species_folder.mkdir(parents=True, exist_ok=True)  # create folder if needed
+    if not results[0].masks: 
+        species_folder = OUTPUT_FOLDER / "Unidentified"
+        species_folder.mkdir(parents=True, exist_ok=True)  # create folder if needed
 
         # Copy the file
-    #    dest_file = species_folder / file.name  # keep same name
-    #    shutil.move(file, dest_file)
-    #    continue
+        dest_file = species_folder / file.name  # keep same name
+        shutil.move(file, dest_file)
+        continue
     
     class_names = model.names  # YOLO class names
 
@@ -139,21 +139,19 @@ for file in files:
         # --- draw polygon ---
         #if DRAW: draw_polygon(poly_pts)
         
-    
+    to_infer = max(detections, key=lambda x: x[0])[1]
 
     # --- crop bounding box from mask ---
-    if results[0].masks:
-        to_infer = max(detections, key=lambda x: x[0])[1]
-        ys, xs = np.where(to_infer)
-        if len(xs) == 0:
-            continue
-    
-        x1, x2 = xs.min(), xs.max()
-        y1, y2 = ys.min(), ys.max()
-    
-        crop = rgb[y1:y2, x1:x2]
-    else:
-        corp = rgb
+
+    ys, xs = np.where(to_infer)
+    if len(xs) == 0:
+        continue
+
+    x1, x2 = xs.min(), xs.max()
+    y1, y2 = ys.min(), ys.max()
+
+    crop = rgb[y1:y2, x1:x2]
+
 
     # --- infer species ---
     if ANIMAL_DETECTION:
@@ -189,3 +187,4 @@ for file in files:
 
 
     #if DRAW: pil_img.show()
+
