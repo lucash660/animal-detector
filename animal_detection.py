@@ -14,9 +14,9 @@ DRAW = False
 BLUR = True
 ANIMAL_DETECTION = True
 
-MAPPING_FILE = Path("/Users/hanshaag/Downloads/inat21-mapping.json")
-INPUT_FOLDER = Path("/Users/hanshaag/Documents/100MSDCF")
-OUTPUT_FOLDER = Path("/Users/hanshaag/Documents/100MSDCF")
+MAPPING_FILE = Path("./inat21-mapping.json") # Path("/Users/hanshaag/Downloads/inat21-mapping.json")
+INPUT_FOLDER = Path(r"C:\Users\LucasHaag\Downloads\filesZip") #Path("/Users/hanshaag/Documents/100MSDCF")
+OUTPUT_FOLDER = Path(r"C:\Users\LucasHaag\Downloads\filesZip") #Path("/Users/hanshaag/Documents/100MSDCF")
 
 # Function to compute Laplacian variance as focus score
 def focus_score(gray_np):
@@ -87,8 +87,8 @@ INAT_CLASSES = [
 
 for file in files:
 
-    raw = rawpy.imread(str(file))
-    rgb = raw.postprocess()
+    with rawpy.imread(str(file)) as raw:
+        rgb = raw.postprocess()
 
     # -------- Load detection model --------
     model = YOLO('yolov8n-seg.pt')

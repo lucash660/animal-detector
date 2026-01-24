@@ -1,0 +1,69 @@
+# Animal Photo Sorting Tool
+
+This project automatically groups similar RAW photos, detects animals, classifies the species, and moves the original files into species-specific folders.
+
+---
+
+## What this project does
+
+1. Loads RAW photos (`.ARW`)
+2. Groups visually similar photos (burst shots)
+3. Detects animals using YOLO
+4. Classifies the species using an iNat model
+5. Moves the original RAW files into output folders by species
+
+---
+
+## Requirements
+
+* Python **3.9 or newer**
+* Internet connection (first run only, for model downloads)
+
+All Python libraries are installed automatically.
+
+---
+
+## Setup (first time only)
+
+### On macOS
+
+1. Open **Terminal**
+2. Navigate to the project folder:
+
+   ```bash
+   cd path/to/project
+   ```
+3. Run:
+
+   ```bash
+   bash setup.sh
+   ```
+
+This creates a virtual environment and installs all dependencies.
+
+---
+
+## Running the program
+
+After setup, run:
+
+```bash
+bash run.sh
+```
+
+---
+
+## Notes
+
+* Do **not** delete the `venv/` folder after setup
+
+---
+
+## Troubleshooting
+
+If something goes wrong:
+
+1. Rerun `bash setup.sh`
+2. Check that the input folder contains `.ARW` files
+
+---
