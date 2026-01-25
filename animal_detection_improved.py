@@ -18,8 +18,8 @@ BLUR = True
 ANIMAL_DETECTION = True
 
 MAPPING_FILE = Path("./inat21-mapping.json")  # Path("/Users/hanshaag/Downloads/inat21-mapping.json")
-INPUT_FOLDER = Path(r"C:\Users\LucasHaag\Downloads\filesZip - Copy")  # Path("/Users/hanshaag/Documents/100MSDCF")
-OUTPUT_FOLDER = Path(r"C:\Users\LucasHaag\Downloads\filesZip - Copy")  # Path("/Users/hanshaag/Documents/100MSDCF")
+INPUT_FOLDER = Path("/Users/hanshaag/Documents/100MSDCF") #Path(r"C:\Users\LucasHaag\Downloads\filesZip - Copy")  #
+OUTPUT_FOLDER = Path("/Users/hanshaag/Documents/100MSDCF") #Path(r"C:\Users\LucasHaag\Downloads\filesZip - Copy")  #
 
 
 # Function to compute Laplacian variance as focus score
