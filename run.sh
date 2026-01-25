@@ -1,3 +1,3 @@
 #!/bin/bash
 source venv/bin/activate
-python main.py
+python animal_detection_improved.py
